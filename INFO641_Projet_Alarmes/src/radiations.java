@@ -9,6 +9,13 @@ public class radiations extends AlarmeEvent{
 		this.niveau = niveau;
 	}
 
+	@Override
+	public String toString() {
+		return "radiations [niveau=" + niveau + ", getNiveau()=" + getNiveau() + ", getBatiment()=" + getBatiment()
+				+ ", getType()=" + getType() + ", getNvImportance()=" + getNvImportance() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
 	public Integer getNiveau() {
 		return niveau;
 	}

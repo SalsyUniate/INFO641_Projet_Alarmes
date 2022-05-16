@@ -6,7 +6,7 @@ public class Simulation {
 	
      Simulation(){  
         JFrame f= new JFrame(); 
-        f.setSize(800, 400);
+        f.setSize(1000, 600);
         
         //Choix bâtiment
         final JLabel label1 = new JLabel("Bâtiment");          
@@ -16,12 +16,11 @@ public class Simulation {
           l1.addElement("Chambéry");  
           l1.addElement("Bourget du Lac");  
           final JList<String> list1 = new JList<>(l1);  
-          list1.setBounds(100,100, 100, 75);  
+          list1.setBounds(100,100, 100, 50);  
           
           f.add(list1); f.add(label1);  
-          f.setSize(450,450);  
           f.setLayout(null);  
-          f.setVisible(true);  
+          f.setVisible(true); 
           
           
           // Choix type d'alarme
@@ -32,12 +31,10 @@ public class Simulation {
             l2.addElement("Gaz toxique");  
             l2.addElement("Radiations");  
             final JList<String> list2 = new JList<>(l2);  
-            list2.setBounds(300, 100, 100, 75);  
+            list2.setBounds(300, 100, 100, 50);  
             
             f.add(list2); f.add(label2);  
-            f.setSize(450,450);  
-            f.setLayout(null);  
-            f.setVisible(true);
+
             
             
          // Choix niveau d'alarme
@@ -49,13 +46,10 @@ public class Simulation {
               l3.addElement("2");  
               l3.addElement("3");  
               final JList<String> list3 = new JList<>(l3);  
-              list3.setBounds(500, 100, 100, 75);  
+              list3.setBounds(500, 100, 100, 50);  
               
               f.add(list3); f.add(label3);  
-              f.setSize(450,450);  
-              f.setLayout(null);  
-              f.setVisible(true);
-              
+
               
            // Bouton de soumission
               JButton b=new JButton("Submit");  
@@ -70,19 +64,25 @@ public class Simulation {
                  event = list2.getSelectedValue();  
                  	if (event =="Incendie") {
                  		incendies AlarmeI = new incendies(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()));
+                 		
                  	};
                  	if (event == "Radiations") {
                  		JLabel LabelRad = new JLabel("niveau de radiations");
                  		LabelRad.setBounds(200, 200, 200, 100); 
+                 		
                  		JTextField textNvRad = new JTextField();
                  		textNvRad.setBounds(200,300,100,20);
+                 		
                  		f.add(textNvRad); f.add(LabelRad);
                  		
                  		JButton bRad=new JButton("Submit");  
                         bRad.setBounds(200,350,80,30);  
                         f.add(bRad);
                         
+                        SwingUtilities.updateComponentTreeUI(f);
+                        
                         radiations AlarmeR = new radiations(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), Integer.parseInt(textNvRad.getText()));
+                 	
                  	};
                  	if (event == "Gaz toxique") {
                  		JLabel LabelGaz = new JLabel("type de gaz émis");
@@ -95,7 +95,10 @@ public class Simulation {
                         bGaz.setBounds(200,350,80,30);  
                         f.add(bGaz);
                         
+                        SwingUtilities.updateComponentTreeUI(f);
+                        
                         gaz_toxiques AlarmeG = new gaz_toxiques(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), textGazEmis.getText());
+              
                  	};
  
          

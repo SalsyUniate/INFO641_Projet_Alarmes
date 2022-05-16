@@ -7,6 +7,13 @@ public class incendies extends AlarmeEvent{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "incendies [getBatiment()=" + getBatiment() + ", getType()=" + getType() + ", getNvImportance()="
+				+ getNvImportance() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
 
 	
 

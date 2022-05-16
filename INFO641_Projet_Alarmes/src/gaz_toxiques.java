@@ -8,6 +8,14 @@ public class gaz_toxiques extends AlarmeEvent{
 		this.type_emis = type_emis;
 	}
 
+	@Override
+	public String toString() {
+		return "gaz_toxiques [type_emis=" + type_emis + ", getType_emis()=" + getType_emis() + ", getBatiment()="
+				+ getBatiment() + ", getType()=" + getType() + ", getNvImportance()=" + getNvImportance()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
 	public String getType_emis() {
 		return type_emis;
 	}
