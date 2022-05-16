@@ -3,8 +3,8 @@ import java.util.EventObject;
 public class gaz_toxiques extends AlarmeEvent{
 	private String type_emis;
 
-	public gaz_toxiques(String type_emis) {
-		super();
+	public gaz_toxiques(String batiment, String type, Integer nvImportance, String type_emis) {
+		super(batiment, type, nvImportance);
 		this.type_emis = type_emis;
 	}
 
@@ -15,6 +15,8 @@ public class gaz_toxiques extends AlarmeEvent{
 	public void setType_emis(String type_emis) {
 		this.type_emis = type_emis;
 	}
+
+
 	
 	
 

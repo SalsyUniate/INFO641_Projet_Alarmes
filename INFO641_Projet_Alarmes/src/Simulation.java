@@ -62,19 +62,45 @@ public class Simulation {
               b.setBounds(650,100,80,30);  
               f.add(b);
               
-          
               
-              
-          
-          /*
+          // Soumission du choix
           b.addActionListener(new ActionListener() {  
               public void actionPerformed(ActionEvent e) {   
-                 String data = "";                       
-                 data = list1.getSelectedValue();   
-                 label.setText(data);  
+                 String event = "";                       
+                 event = list2.getSelectedValue();  
+                 	if (event =="Incendie") {
+                 		incendies AlarmeI = new incendies(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()));
+                 	};
+                 	if (event == "Radiations") {
+                 		JLabel LabelRad = new JLabel("niveau de radiations");
+                 		LabelRad.setBounds(200, 200, 200, 100); 
+                 		JTextField textNvRad = new JTextField();
+                 		textNvRad.setBounds(200,300,100,20);
+                 		f.add(textNvRad); f.add(LabelRad);
+                 		
+                 		JButton bRad=new JButton("Submit");  
+                        bRad.setBounds(200,350,80,30);  
+                        f.add(bRad);
+                        
+                        radiations AlarmeR = new radiations(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), Integer.parseInt(textNvRad.getText()));
+                 	};
+                 	if (event == "Gaz toxique") {
+                 		JLabel LabelGaz = new JLabel("type de gaz émis");
+                 		LabelGaz.setBounds(200, 200, 200, 100); 
+                 		JTextField textGazEmis = new JTextField();
+                 		textGazEmis.setBounds(200, 300, 100, 20);
+                 		f.add(textGazEmis); f.add(LabelGaz);
+                 		
+                 		JButton bGaz=new JButton("Submit");  
+                        bGaz.setBounds(200,350,80,30);  
+                        f.add(bGaz);
+                        
+                        gaz_toxiques AlarmeG = new gaz_toxiques(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), textGazEmis.getText());
+                 	};
+ 
          
               }  
-           });   */
+           });   
      }  
 public static void main(String args[])  
     {  

@@ -1,18 +1,19 @@
 import java.util.EventObject;
 
 public class radiations extends AlarmeEvent{
-	private int niveau;
+	private Integer niveau;
 
-	public radiations(int niveau) {
-		super();
+	
+	public radiations(String batiment, String type, Integer nvImportance, Integer niveau) {
+		super(batiment, type, nvImportance);
 		this.niveau = niveau;
 	}
 
-	public int getNiveau() {
+	public Integer getNiveau() {
 		return niveau;
 	}
 
-	public void setNiveau(int niveau) {
+	public void setNiveau(Integer niveau) {
 		this.niveau = niveau;
 	}
 	
