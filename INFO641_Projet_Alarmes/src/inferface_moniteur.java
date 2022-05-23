@@ -5,7 +5,7 @@ public class inferface_moniteur {
 	        JFrame f= new JFrame(); 
 	        f.setSize(800, 400);
 	        
-	        //Choix bâtiment
+	     // Choix bâtiment
 	        final JLabel label1 = new JLabel("");          
 	        label1.setBounds(100, 30, 100, 20); 
 	        final DefaultListModel<String> l1 = new DefaultListModel<>();  
@@ -28,5 +28,5 @@ public class inferface_moniteur {
               b2.setBounds(500,100,80,30);  
               f.add(b2);
 	          
-
+	 }
 }
