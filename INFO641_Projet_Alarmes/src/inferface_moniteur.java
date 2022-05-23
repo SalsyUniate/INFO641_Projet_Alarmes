@@ -1,9 +1,17 @@
 import javax.swing.*; 
+import java.util.ArrayList;
 
 public class inferface_moniteur {
+	
+	ArrayList<String> traites;
+	ArrayList<String> non_traites;
+	
 	 inferface_moniteur(){  
 	        JFrame f= new JFrame(); 
 	        f.setSize(800, 400);
+	        JLabel nontraite = new JLabel("nontraite");
+	      
+	        
 	        
 	     // Choix bâtiment
 	        final JLabel label1 = new JLabel("");          
@@ -20,13 +28,23 @@ public class inferface_moniteur {
 	          f.setLayout(null);  
 	          f.setVisible(true);  
 	          
-	       // Bouton Détail
-              JButton b1=new JButton("Détail");  
+	       // Bouton Détails
+              JButton b1=new JButton("Détails");  
               b1.setBounds(300,100,80,30);  
               f.add(b1);
-              JButton b2=new JButton("Détail");  
+              JButton b2=new JButton("Traité");  
               b2.setBounds(500,100,80,30);  
               f.add(b2);
 	          
 	 }
+	 
+	 public void actionPerformed(AlarmeEvent e){
+		 
+	 }
+	 
+	 public static void main(String args[])  
+	    {  
+	   new inferface_moniteur();  
+	    }
+
 }

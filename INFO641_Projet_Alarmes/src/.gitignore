@@ -13,3 +13,7 @@
 /main.class
 /moniteur_A.class
 /radiations.class
+/moniteurs.class
+/MoniteurListener.class
+/MoniteurListenerA.class
+/MoniteurListenerB.class

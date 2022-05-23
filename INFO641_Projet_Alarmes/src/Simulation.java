@@ -7,6 +7,7 @@ public class Simulation {
      Simulation(){  
         JFrame f= new JFrame(); 
         f.setSize(1000, 600);
+        SwingUtilities.updateComponentTreeUI(f);
         
      // Choix bâtiment
         final JLabel label1 = new JLabel("Bâtiment");          

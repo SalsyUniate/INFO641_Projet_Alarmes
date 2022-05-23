@@ -1,15 +1,19 @@
+import java.util.ArrayList;
 
 public class Capteurs {
 	private String date;
 	private String localisation;
 	private String nvImportance;
+	private ArrayList<MoniteurListenerA> alarmesTypeA;
+	private ArrayList<MoniteurListenerB> alarmesTypeB;
 	
 	
 	public Capteurs(String date, String localisation, String nvImportance) {
-		super();
 		this.date = date;
 		this.localisation = localisation;
 		this.nvImportance = nvImportance;
+		alarmesTypeA = new ArrayList<MoniteurListenerA>();
+		alarmesTypeB = new ArrayList<MoniteurListenerB>();
 	}
 
 
@@ -42,6 +46,28 @@ public class Capteurs {
 		this.nvImportance = nvImportance;
 	}
 	
+	public void addListenerA(MoniteurListenerA unEcouteur) {
+		alarmesTypeA.add(unEcouteur);
+	}
 	
-
+	public void addListenerA(MoniteurListenerB unEcouteur) {
+		alarmesTypeB.add(unEcouteur);
+	}
+	
+	public void removeListenerA (MoniteurListenerA unEcouteur) {
+        for (int i = 0; i < alarmesTypeA.size(); i++) {
+            if (alarmesTypeA.get(i) == unEcouteur) {
+                alarmesTypeA.remove(i);
+            }
+        }
+	}
+	
+	public void removeListenerB (MoniteurListenerB unEcouteur) {
+        for (int i = 0; i < alarmesTypeB.size(); i++) {
+            if (alarmesTypeB.get(i) == unEcouteur) {
+                alarmesTypeB.remove(i);
+            }
+        }
+	}
+	
 }
