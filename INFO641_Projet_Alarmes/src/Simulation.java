@@ -8,7 +8,7 @@ public class Simulation {
         JFrame f= new JFrame(); 
         f.setSize(1000, 600);
         
-        //Choix bâtiment
+     // Choix bâtiment
         final JLabel label1 = new JLabel("Bâtiment");          
         label1.setBounds(100, 30, 100, 20); 
         final DefaultListModel<String> l1 = new DefaultListModel<>();  
@@ -23,7 +23,7 @@ public class Simulation {
           f.setVisible(true); 
           
           
-          // Choix type d'alarme
+       // Choix type d'alarme
           final JLabel label2 = new JLabel("type");          
           label2.setBounds(300, 30, 100, 20);  
           final DefaultListModel<String> l2 = new DefaultListModel<>();  
