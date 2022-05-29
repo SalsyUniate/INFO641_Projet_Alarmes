@@ -8,9 +8,15 @@ public class main {
 		moniteur_A ma = new moniteur_A("ma");
 		Moniteur_B mb = new Moniteur_B("mb");
 		
-	    new Simulation();  
-	   
+		incendies test = new incendies("a", "buyf", 14);
 
+		ArrayList<AlarmeEvent> alarmesATraiter = new ArrayList<AlarmeEvent>();
+		ArrayList<AlarmeEvent> alarmesTraitees = new ArrayList<AlarmeEvent>();
+		ArrayList<AlarmeEvent> enAttente = new ArrayList<AlarmeEvent>();
+		
+	    new Simulation(alarmesATraiter, alarmesTraitees, enAttente);  
+	    
+	    System.out.println(test.toString());
 	}
-
 }
+

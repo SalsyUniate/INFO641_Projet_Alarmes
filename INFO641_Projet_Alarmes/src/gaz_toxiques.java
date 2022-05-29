@@ -10,10 +10,8 @@ public class gaz_toxiques extends AlarmeEvent{
 
 	@Override
 	public String toString() {
-		return "gaz_toxiques [type_emis=" + type_emis + ", getType_emis()=" + getType_emis() + ", getBatiment()="
-				+ getBatiment() + ", getType()=" + getType() + ", getNvImportance()=" + getNvImportance()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+		return "gaz_toxiques, type émis : " + getType_emis() + ", bâtiment : "
+				+ getBatiment() + ", type : " + getType() + ", niveau d'importance : " + getNvImportance();
 	}
 
 	public String getType_emis() {

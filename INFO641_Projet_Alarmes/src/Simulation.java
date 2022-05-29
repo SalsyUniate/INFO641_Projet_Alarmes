@@ -1,13 +1,32 @@
 import javax.swing.*;  
 import java.awt.event.*; 
+import java.util.ArrayList;
 
 
 public class Simulation {
 	
-     Simulation(){  
+	public ArrayList<AlarmeEvent> non_traites;
+	public ArrayList<AlarmeEvent> alarmesTraitees;
+	public ArrayList<AlarmeEvent> enAttente;
+	
+     public Simulation(ArrayList<AlarmeEvent> alarmesNon_traites, ArrayList<AlarmeEvent> alarmes_traitees, ArrayList<AlarmeEvent> en_attente){  
+    	 non_traites = alarmesNon_traites;
+    	 alarmesTraitees = alarmes_traitees;
+    	 enAttente = en_attente;
+    	 
+    	 
+    	 
         JFrame f= new JFrame(); 
         f.setSize(1000, 600);
         SwingUtilities.updateComponentTreeUI(f);
+        
+        
+     // Bouton de soumission
+        JButton b=new JButton("Submit");  
+        b.setBounds(700,100,80,30);  
+        f.add(b);
+        b.setVisible(true);
+        
         
      // Choix bâtiment
         final JLabel label1 = new JLabel("Bâtiment");          
@@ -52,10 +71,7 @@ public class Simulation {
               f.add(list3); f.add(label3);  
 
               
-           // Bouton de soumission
-              JButton b=new JButton("Submit");  
-              b.setBounds(650,100,80,30);  
-              f.add(b);
+           
               
               
           // Soumission du choix
@@ -65,6 +81,10 @@ public class Simulation {
                  event = list2.getSelectedValue();  
                  	if (event =="Incendie") {
                  		incendies AlarmeI = new incendies(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()));
+                 		
+                 		en_attente.add(AlarmeI);
+
+                  	    new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
                  		
                  	};
                  	if (event == "Radiations") {
@@ -83,7 +103,11 @@ public class Simulation {
                         SwingUtilities.updateComponentTreeUI(f);
                         
                         radiations AlarmeR = new radiations(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), Integer.parseInt(textNvRad.getText()));
-                 	
+                        en_attente.add(AlarmeR);
+                        
+                        new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
+
+                        
                  	};
                  	if (event == "Gaz toxique") {
                  		JLabel LabelGaz = new JLabel("type de gaz émis");
@@ -99,15 +123,21 @@ public class Simulation {
                         SwingUtilities.updateComponentTreeUI(f);
                         
                         gaz_toxiques AlarmeG = new gaz_toxiques(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), textGazEmis.getText());
-              
+                        enAttente.add(AlarmeG);
+                        new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
+
+                        
                  	};
  
          
               }  
            });   
+
      }  
-public static void main(String args[])  
-    {  
-   new Simulation();  
-    }}  
+//public static void main(String args[])  
+   // {  
+  // new Simulation();  
+    //}
+
+}  
 

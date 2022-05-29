@@ -1,25 +1,39 @@
-import javax.swing.*; 
+import javax.swing.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
+
 
 public class inferface_moniteur {
 	
-	ArrayList<String> traites;
-	ArrayList<String> non_traites;
+	public ArrayList<AlarmeEvent> traites;
+	public ArrayList<AlarmeEvent> non_traites;
 	
-	 inferface_moniteur(){  
+	
+	 inferface_moniteur(ArrayList<AlarmeEvent> alarmesTraites,
+			 				ArrayList<AlarmeEvent> alarmesNon_traites){  
+		 traites = alarmesTraites;
+		 non_traites = alarmesNon_traites;
+		    
+		    	 
 	        JFrame f= new JFrame(); 
-	        f.setSize(800, 400);
+	        f.setSize(1000, 600);
 	        JLabel nontraite = new JLabel("nontraite");
 	      
 	        
 	        
 	     // Choix bâtiment
+	        
 	        final JLabel label1 = new JLabel("");          
-	        label1.setBounds(100, 30, 100, 20); 
+	        label1.setBounds(50, 50, 300, 300); 
 	        final DefaultListModel<String> l1 = new DefaultListModel<>();  
-	          l1.addElement("Annecy");  
-	          l1.addElement("Chambéry");  
-	          l1.addElement("Bourget du Lac");  
+	        for (int i = 0; i<non_traites.size(); i++) {
+	        	l1.addElement(non_traites.get(i).getType());
+	        
+	        }
+
 	          final JList<String> list1 = new JList<>(l1);  
 	          list1.setBounds(100,100, 100, 75);  
 	          
@@ -32,19 +46,22 @@ public class inferface_moniteur {
               JButton b1=new JButton("Détails");  
               b1.setBounds(300,100,80,30);  
               f.add(b1);
-              JButton b2=new JButton("Traité");  
+              
+              JButton b2=new JButton("Traiter");  
               b2.setBounds(500,100,80,30);  
               f.add(b2);
 	          
-	 }
 	 
-	 public void actionPerformed(AlarmeEvent e){
-		 
-	 }
 	 
-	 public static void main(String args[])  
-	    {  
-	   new inferface_moniteur();  
-	    }
+	 b1.addActionListener(new ActionListener() {  
+         public void actionPerformed(ActionEvent e) {  
+       	  label1.setText(list1.getSelectedValue().toString());
+         };
+	
+	
+	
+});
+	 
+	
 
-}
+}}

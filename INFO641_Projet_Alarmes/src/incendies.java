@@ -9,9 +9,8 @@ public class incendies extends AlarmeEvent{
 
 	@Override
 	public String toString() {
-		return "incendies [getBatiment()=" + getBatiment() + ", getType()=" + getType() + ", getNvImportance()="
-				+ getNvImportance() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+		return "Bâtiment : " + getBatiment() + ", type : " + getType() + ", Niveau d'importance : "
+				+ getNvImportance();
 	}
 
 
