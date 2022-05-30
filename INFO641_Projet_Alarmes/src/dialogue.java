@@ -25,7 +25,7 @@ public class dialogue {
 		
 		
 		JFrame f= new JFrame(); 
-        f.setSize(1000, 600);
+        f.setSize(800, 400);
         SwingUtilities.updateComponentTreeUI(f);
 		final JLabel label1 = new JLabel("ALARME : "+enAttente.get(0).getType());          
         label1.setBounds(50, 50, 200, 200); 
@@ -38,10 +38,13 @@ public class dialogue {
           f.add(label1);
           
           b.addActionListener(new ActionListener() {  
-              public void actionPerformed(ActionEvent e) {  
+              public void actionPerformed(ActionEvent e) { 
+  
             	  alarmesATraiter.add(en_attente.get(0));
             	  
             	  new inferface_moniteur(alarmes_traitees, alarmes_a_traiter);
+            	  f.dispose();
+            	  
               };
 		
 	});

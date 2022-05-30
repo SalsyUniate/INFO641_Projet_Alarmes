@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public class Simulation {
-	
+	//INTERFACE GRAPHIQUE DE DÉCLARATION DES ALARMES 
 	public ArrayList<AlarmeEvent> non_traites;
 	public ArrayList<AlarmeEvent> alarmesTraitees;
 	public ArrayList<AlarmeEvent> enAttente;
@@ -15,7 +15,7 @@ public class Simulation {
     	 enAttente = en_attente;
     	 
     	 
-    	 
+    	// fenêtre 
         JFrame f= new JFrame(); 
         f.setSize(1000, 600);
         SwingUtilities.updateComponentTreeUI(f);
@@ -28,7 +28,7 @@ public class Simulation {
         b.setVisible(true);
         
         
-     // Choix bâtiment
+     // Choix du bâtiment
         final JLabel label1 = new JLabel("Bâtiment");          
         label1.setBounds(100, 30, 100, 20); 
         final DefaultListModel<String> l1 = new DefaultListModel<>();  
@@ -43,7 +43,7 @@ public class Simulation {
           f.setVisible(true); 
           
           
-       // Choix type d'alarme
+       // Choix du type d'alarme
           final JLabel label2 = new JLabel("type");          
           label2.setBounds(300, 30, 100, 20);  
           final DefaultListModel<String> l2 = new DefaultListModel<>();  
@@ -57,7 +57,7 @@ public class Simulation {
 
             
             
-         // Choix niveau d'alarme
+         // Choix du niveau d'alarme
             final JLabel label3 = new JLabel("niveau");          
             label3.setBounds(500, 30, 100, 20);  
 
@@ -79,14 +79,18 @@ public class Simulation {
               public void actionPerformed(ActionEvent e) {   
                  String event = "";                       
                  event = list2.getSelectedValue();  
+                 	//en cas d'incendie
                  	if (event =="Incendie") {
                  		incendies AlarmeI = new incendies(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()));
                  		
                  		en_attente.add(AlarmeI);
 
                   	    new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
+                  	  SwingUtilities.updateComponentTreeUI(f);
+
                  		
                  	};
+                 	//en cas de fuite de radiations 
                  	if (event == "Radiations") {
                  		JLabel LabelRad = new JLabel("niveau de radiations");
                  		LabelRad.setBounds(200, 200, 200, 100); 
@@ -102,13 +106,22 @@ public class Simulation {
                         
                         SwingUtilities.updateComponentTreeUI(f);
                         
-                        radiations AlarmeR = new radiations(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), Integer.parseInt(textNvRad.getText()));
-                        en_attente.add(AlarmeR);
+                        bRad.addActionListener(new ActionListener(){
+                        	public void actionPerformed(ActionEvent e){
+                        		radiations AlarmeR = new radiations(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), Integer.parseInt(textNvRad.getText()));
+                                en_attente.add(AlarmeR);
+                                
+                                new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
+                                SwingUtilities.updateComponentTreeUI(f);
                         
-                        new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
+                               
+                        	};
+                        });
+                        
 
                         
                  	};
+                 	// en cas de fuite de gaz toxique 
                  	if (event == "Gaz toxique") {
                  		JLabel LabelGaz = new JLabel("type de gaz émis");
                  		LabelGaz.setBounds(200, 200, 200, 100); 
@@ -122,9 +135,18 @@ public class Simulation {
                         
                         SwingUtilities.updateComponentTreeUI(f);
                         
-                        gaz_toxiques AlarmeG = new gaz_toxiques(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), textGazEmis.getText());
-                        enAttente.add(AlarmeG);
-                        new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
+                        bGaz.addActionListener(new ActionListener(){
+                        	public void actionPerformed(ActionEvent e){
+                        		gaz_toxiques AlarmeG = new gaz_toxiques(list1.getSelectedValue(), list2.getSelectedValue(), Integer.parseInt(list3.getSelectedValue()), textGazEmis.getText());
+                                enAttente.add(AlarmeG);
+                                
+                                new dialogue(alarmesNon_traites, alarmes_traitees, en_attente);
+                                SwingUtilities.updateComponentTreeUI(f);
+                                
+                                       
+                        	};
+                        });
+                        
 
                         
                  	};

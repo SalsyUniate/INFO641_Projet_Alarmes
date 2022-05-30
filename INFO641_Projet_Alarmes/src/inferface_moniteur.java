@@ -10,6 +10,7 @@ public class inferface_moniteur {
 	
 	public ArrayList<AlarmeEvent> traites;
 	public ArrayList<AlarmeEvent> non_traites;
+	public JFrame f; 
 	
 	
 	 inferface_moniteur(ArrayList<AlarmeEvent> alarmesTraites,
@@ -18,16 +19,12 @@ public class inferface_moniteur {
 		 non_traites = alarmesNon_traites;
 		    
 		    	 
-	        JFrame f= new JFrame(); 
+	        f= new JFrame(); 
 	        f.setSize(1000, 600);
 	        JLabel nontraite = new JLabel("nontraite");
 	      
 	        
-	        
-	     // Choix bâtiment
-	        
-	        final JLabel label1 = new JLabel("");          
-	        label1.setBounds(50, 50, 300, 300); 
+	       
 	        final DefaultListModel<String> l1 = new DefaultListModel<>();  
 	        for (int i = 0; i<non_traites.size(); i++) {
 	        	l1.addElement(non_traites.get(i).getType());
@@ -37,7 +34,7 @@ public class inferface_moniteur {
 	          final JList<String> list1 = new JList<>(l1);  
 	          list1.setBounds(100,100, 100, 75);  
 	          
-	          f.add(list1); f.add(label1);  
+	          f.add(list1); 
 	          f.setSize(450,450);  
 	          f.setLayout(null);  
 	          f.setVisible(true);  
@@ -48,20 +45,75 @@ public class inferface_moniteur {
               f.add(b1);
               
               JButton b2=new JButton("Traiter");  
-              b2.setBounds(500,100,80,30);  
+              b2.setBounds(300,200,80,30);  
               f.add(b2);
-	          
+              
 	 
-	 
-	 b1.addActionListener(new ActionListener() {  
-         public void actionPerformed(ActionEvent e) {  
-       	  label1.setText(list1.getSelectedValue().toString());
-         };
-	
-	
+              b1.addActionListener(new ActionListener() {  
+            	  public void actionPerformed(ActionEvent e) {  
+            		  
+            		  
+            		  JFrame fp = new JFrame();
+            		  fp.setSize(800, 600);
+            		  int index = list1.getSelectedIndex();
+            		  final JLabel label1 = new JLabel("");          
+          	        	label1.setBounds(50, 50, 300, 300); 
+          	        	label1.setText(non_traites.get(index).toString());
+          	        	fp.add(label1);
+          	        	fp.setVisible(true);
+          	        	
+          	        	JButton bp = new JButton("Fermer");
+          	        	bp.setLayout(null);
+          	        	//bp.setBounds(100, 50, 150, 150);
+          	        	fp.add(bp);
+          	        	bp.addActionListener(new ActionListener() {
+          	        		public void actionPerformed(ActionEvent e) {
+          	        			fp.dispose();
+          	        		}
+          	        	});
+          	        	
+            	  };
 	
 });
+              b2.addActionListener(new ActionListener() {
+            	  public void actionPerformed(ActionEvent e) {
+            		  int index = list1.getSelectedIndex();
+            		  traites.add(non_traites.get(index));
+            		  non_traites.remove(index);
+            		  list1.removeAll();
+            		  reset();
+            		  f.revalidate();
+            		  SwingUtilities.updateComponentTreeUI(f);
+            	  }
+              });
 	 
 	
 
-}}
+}
+public void reset(){
+    DefaultListModel<String> l1 = new DefaultListModel<>();  
+    for (int i = 0; i<non_traites.size(); i++) {
+    	l1.addElement(non_traites.get(i).getType());
+    
+    }
+    final JList<String> list1 = new JList<>(l1);  
+    list1.setBounds(100,100, 100, 75);  
+    
+    f.add(list1); 
+    f.setSize(450,450);  
+    f.setLayout(null);  
+    f.setVisible(true);
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
